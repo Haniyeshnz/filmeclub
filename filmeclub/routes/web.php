@@ -5,6 +5,10 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\indexController;
 use App\Http\Controllers\videoController;
 use App\Http\Controllers\categoryVideoController;
+use App\Mail\verifyEmail;
+use Illuminate\Support\Facades\Mail;
+use App\Models\user;
+
 
 
 /*
@@ -41,3 +45,7 @@ Route::middleware('auth')->group(function () {
 });
 
 require __DIR__.'/auth.php';
+Route::get('/email',function(){
+    $user=user::first();
+    return (new verifyEmail($user))->render();
+});

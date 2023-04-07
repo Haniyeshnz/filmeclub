@@ -41,15 +41,15 @@ class video extends Model
     }
     public function user(): BelongsTo
     {
-        return $this->belongsTo(video::class);
+        return $this->belongsTo(user::class);
     }
-    // public function getOwnerNameAttribute()
-    // {
-    //     return $this->user?->name;
-    // }
-    // public function getOwnerAvatarAttribute()
-    // {
-    //     return $this->user?->name;
-    // }
+    public function getOwnerNameAttribute()
+    {
+        return $this->user?->name;
+    }
+    public function getOwnerAvatarAttribute()
+    {
+        return $this->user?->gravatar;
+    }
 
 }
